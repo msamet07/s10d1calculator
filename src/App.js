@@ -1,9 +1,27 @@
 import React from 'react';
+import { useState, useReducer } from "react";
+import reducer, { initialState } from "./reducers/index";
+import {
+  ADD_ONE,
+  APPLY_NUMBER,
+  CHANGE_OPERATION,
+  CLEAR_DISPLAY,
+  NUMBER_CIKAR,
+} from "./actions";
 
 import TotalDisplay from './components/TotalDisplay';
 import CalcButton from './components/CalcButton';
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  
+
+  function handleAdd() {
+    dispatch({ type: ADD_ONE });
+  }
+  function numberCıkar() {
+    dispatch({ type: NUMBER_CIKAR });
+  }
   return (
     <div className="App">
       <nav className="navbar navbar-dark bg-dark">
